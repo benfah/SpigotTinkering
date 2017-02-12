@@ -17,17 +17,28 @@ public class Localization
 	
 	public static void removeLocalization(String langcode, String id)
 	{
-		localizationMap.remove(id);
+		HashMap<String, String> hm = localizationMap.get(langcode);
+		if(hm != null)
+		{
+			hm.remove(id);
+			localizationMap.put(langcode, hm);
+		}
+		
 	}
 	
 	public static void addLocalization(String langcode, String id, String localization)
 	{
-		localizationMap.put(id, ChatColor.RESET + localization);
+		HashMap<String, String> rm = localizationMap.get(langcode);
+		if(rm == null)
+		rm = new HashMap<>();
+		rm.put(id, localization);
+		localizationMap.put(langcode, rm);
+		
 	}
 	
-	public static String getLocalization(String id)
+	public static String getLocalization(String langcode, String id)
 	{
-		return localizationMap.get(id);
+		return localizationMap.get(langcode).get(id);
 	}
 	
 	

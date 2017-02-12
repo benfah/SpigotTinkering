@@ -4,14 +4,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ItemContext 
 {
-	ConcurrentHashMap<Object, Object> chm;
+	ConcurrentHashMap<String, String> chm;
 	
 	public ItemContext()
 	{
 		chm = new ConcurrentHashMap<>();
 	}
 	
-	public void set(Object k, Object v)
+	public void set(String k, String v)
 	{
 		chm.put(k, v);
 	}
@@ -25,6 +25,8 @@ public class ItemContext
 	{
 		set("head", h);
 	}
+	
+	
 	
 	public void setBinding(String b)
 	{
